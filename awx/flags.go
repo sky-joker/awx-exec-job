@@ -8,6 +8,7 @@ var flags = []cli.Flag{
 	Password,
 	TemplateName,
 	SSL,
+	ExtraVars,
 }
 
 var Host = cli.StringFlag{
@@ -35,4 +36,9 @@ var TemplateName = cli.StringFlag{
 var SSL = cli.BoolFlag{
 	Name:  "ssl",
 	Usage: "Specified only when using SSL",
+}
+
+var ExtraVars = cli.StringFlag{
+	Name:  "extra, e",
+	Usage: "Specify extra vars",
 }

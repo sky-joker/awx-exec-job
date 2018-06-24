@@ -1,6 +1,7 @@
 package awx
 
 import (
+	"bytes"
 	"crypto/tls"
 	"encoding/json"
 	"errors"
@@ -58,9 +59,16 @@ func getLaunchUrl(c *cli.Context, base_url string) (string, error) {
 }
 
 func postUrl(c *cli.Context, url string) error {
+	var body []byte
+	if c.String("extra") != "" {
+		body = []byte(c.String("extra"))
+	} else {
+		body = nil
+	}
+
 	client := createClient()
-	req, _ := http.NewRequest("POST", url, nil)
-	req.Header.Add("Conente-Type", "application/json")
+	req, _ := http.NewRequest("POST", url, bytes.NewBuffer(body))
+	req.Header.Add("Content-Type", "application/json")
 	req.SetBasicAuth(c.String("username"), c.String("password"))
 	res, _ := client.Do(req)
 	defer res.Body.Close()

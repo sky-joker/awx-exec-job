@@ -1,3 +1,3 @@
 package awx
 
-const version string = "0.1"
+const version string = "0.2"
