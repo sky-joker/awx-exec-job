@@ -18,7 +18,7 @@ $ awx-exec-job --host awxHostIP -u username(default:admin) -p password -t templa
 
 # ToDo
 
-- [ ] Supports Ansible Tower
+- [X] Supports Ansible Tower
 - [ ] Supports WorkFlow Template
 
 # License
